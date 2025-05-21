@@ -1,0 +1,32 @@
+provider "google" {
+  credentials = file(var.credentials_file_path)
+  project     = var.project_id
+  region      = var.region
+}
+
+module "all_resources" {
+  source                = "../modules/k8s"
+  project_id            = var.project_id
+  region                = var.region
+  credentials_file_path = var.credentials_file_path
+}
+
+variable "region" {
+  type    = string
+  default = "us-east1"
+}
+
+variable "zone" {
+  type    = string
+  default = "us-east1-b"
+}
+
+variable "credentials_file_path" {
+  description = "Path to GCP service account credentials file"
+  default     = "../../credentials/grupo2.json"
+}
+
+variable "project_id" {
+  type    = string
+  default = "sd-hit3"
+}

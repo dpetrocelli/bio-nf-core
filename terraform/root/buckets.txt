@@ -1,0 +1,7 @@
+module "nextflow_bucket" {
+  source                = "../modules/buckets"
+  project_id            = "my-gcp-project"
+  region                = "us-central1"
+  credentials_file_path = "../../credentials/credentials.json"
+
+}

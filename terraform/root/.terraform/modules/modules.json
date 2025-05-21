@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"all_resources","Source":"../modules/k8s","Dir":"../modules/k8s"},{"Key":"gke","Source":"../modules/gke","Dir":"../modules/gke"},{"Key":"gke_2","Source":"../modules/gke","Dir":"../modules/gke"},{"Key":"nextflow_bucket","Source":"../modules/buckets","Dir":"../modules/buckets"}]}

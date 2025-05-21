@@ -1,0 +1,17 @@
+credentials/*.json
+# Ignore all zip files in any directory
+**/*.zip
+
+# Ignore Nextflow runtime directories and logs at any level
+**/.nextflow/
+**/work/
+**/.nextflow.log
+**/.nextflow.log.*
+
+# Ignore any hidden .nextflow folders or logs
+.nextflow/
+work/
+.nextflow.log
+.nextflow.log.*
+
+.history/
