@@ -15,3 +15,8 @@ work/
 .nextflow.log.*
 
 .history/
+
+# Ignore Terraform state and lock files at any level
+**/.terraform/
+**/.terraform.lock.hcl
+**/terraform.tfstate*
