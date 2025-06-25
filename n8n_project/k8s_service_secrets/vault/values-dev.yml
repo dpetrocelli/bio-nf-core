@@ -1,0 +1,27 @@
+server:
+  enabled: true
+
+  dev:
+    enabled: true
+
+  ha:
+    enabled: false
+
+  standalone:
+    enabled: false
+
+  extraEnvironmentVars:
+    VAULT_DEV_ROOT_TOKEN_ID: "root"
+    VAULT_LOG_LEVEL: debug
+
+  # Para exponer el servicio en cluster (puerto 8200)
+  service:
+    enabled: true
+    type: ClusterIP
+    ports:
+      - port: 8200
+        targetPort: 8200
+        name: http
+
+ui:
+  enabled: true

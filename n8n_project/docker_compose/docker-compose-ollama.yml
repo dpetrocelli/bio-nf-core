@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-gpu
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./start.sh:/home/ollama/start.sh:ro
+    entrypoint: ["sh", "/home/ollama/start.sh"]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - OLLAMA_MODEL=${OLLAMA_MODEL:-mistral:7b-instruct}
+      - OLLAMA_HOST=0.0.0.0
+    working_dir: /home/ollama
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - ollama-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  ollama-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: ollama-webui
+    ports:
+      - "8080:8080"
+    volumes:
+      - webui_data:/app/backend/data
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - WEBUI_SECRET_KEY=your-secret-key-here
+      - ANONYMIZED_TELEMETRY=false
+    depends_on:
+      - ollama
+    networks:
+      - ollama-network
+    restart: unless-stopped
+
+volumes:
+  ollama_data: # nombre corregido aquí
+    driver: local
+  webui_data:
+    driver: local
+
+networks:
+  ollama-network:
+    driver: bridge
