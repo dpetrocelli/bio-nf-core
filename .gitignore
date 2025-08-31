@@ -1,4 +1,5 @@
 credentials/*.json
+
 # Ignore all zip files in any directory
 **/*.zip
 
@@ -15,6 +16,39 @@ work/
 .nextflow.log.*
 
 .history/
+
+# Ignore centralized logs (except README)
+logs/work/
+logs/*.html
+logs/*.txt 
+logs/*.svg
+logs/.nextflow*
+!logs/README.md
+
+# Results directories
+results/
+
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+
+# Docker
+.docker/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
 
 # Ignore Terraform state and lock files at any level
 **/.terraform/

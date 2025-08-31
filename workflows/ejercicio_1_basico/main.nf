@@ -6,7 +6,7 @@ process validateFasta {
     output:
     path "${fasta_file.simpleName}.valid.fasta"
 
-    container 'python:3.10'
+    container 'python:latest'
 
     script:
     """
@@ -21,7 +21,7 @@ process count_fasta_headers {
     output:
     path "${validated_file.simpleName}.count.txt"
 
-    container 'python:3.10'
+    container 'python:latest'
 
     script:
     """
@@ -35,7 +35,7 @@ process summarize {
     output:
     path "summary.csv"
 
-    container 'python:3.10'
+    container 'python:latest'
 
     script:
     """
