@@ -8,7 +8,7 @@ Este repositorio contiene ejercicios progresivos para aprender:
 - **Unidad 3**: Versionado, estructura nf-core y colaboración
 
 ## Estructura del Proyecto
-
+fgsdfgsdfg
 ```
 bio-nf-core/
 ├── workflows/                 # 📚 Ejercicios progresivos
